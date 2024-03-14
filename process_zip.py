@@ -9,8 +9,8 @@ def process_json_file(json_file_path):
         with open(json_file_path, 'r', encoding='utf-8') as file:
             data = json.load(file)
 
-        processed_data = {item['key']: item['translation'] for item in data}
-        
+        processed_data = {item['key']: item['translation'] for item in data if item['translation'].strip()}
+
         with open(json_file_path, 'w', encoding='utf-8') as file:
             json.dump(processed_data, file, ensure_ascii=False, indent=2)
             
